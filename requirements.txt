@@ -1,0 +1,14 @@
+pandas>=1.5
+numpy>=1.23
+requests>=2.31
+google-cloud-vision>=3.5
+hubspot-api-client>=8.0
+apify-client>=1.5
+python-dotenv>=1.0
+apache-airflow==2.8.0
+prefect>=2.0
+fastapi>=0.110
+uvicorn>=0.26
+diffbot-api-client>=1.0; python_version >= "3.7"
+ipython
+jupyterlab
