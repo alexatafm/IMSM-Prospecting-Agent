@@ -1,0 +1,44 @@
+{
+    // Name of the dev container displayed in VS Code
+    "name": "ai-outbound-prospecting",
+
+    // Base image with Python 3.11.  This image includes pip and common build tools.
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.11-bullseye",
+
+    // Add Node.js LTS runtime for Apify Actors and JavaScript/TypeScript tooling.
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    },
+
+    // Forward port 8080 for services like Airflow’s web UI.
+    "forwardPorts": [8080],
+
+    // Install Python dependencies, the Apify CLI globally and Node dependencies.
+    "postCreateCommand": "pip install -r requirements.txt && npm install -g apify-cli && npm install",
+
+    // VS Code extensions installed automatically on container build.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    },
+
+    // Environment variables placeholders.  Use Codespaces secrets to set actual values.
+    "containerEnv": {
+        "LUSHA_API_KEY": "<your-lusha-key>",
+        "DIFFBOT_TOKEN": "<your-diffbot-token>",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/workspace/secrets/google_credentials.json",
+        "OVERLOOP_API_KEY": "<your-overloop-key>",
+        "HUBSPOT_ACCESS_TOKEN": "<your-hubspot-key>"
+    },
+
+    // Use the vscode user by default.
+    "remoteUser": "vscode"
+}
